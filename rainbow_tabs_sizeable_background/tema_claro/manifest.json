@@ -1,0 +1,27 @@
+{
+    "manifest_version": 3,
+    "name": "Tema Gaga Arcoíris Claro",
+    "description": "Bordes y colores del navegador arcoíris en modo claro.",
+    "version": "1.0",
+    "theme": {
+        "tints": {
+            "frame": [-1, -1, -1],
+            "background_tab": [-1, -1, -1]
+        },
+        "colors": {
+            "ntp_text": [30, 30, 30],
+            "tab_background_text_inactive": [120, 120, 120],
+            "tab_background_text": [80, 80, 80],
+            "tab_text": [10, 10, 10],
+            "ntp_background": [255, 255, 255],
+            "toolbar": [255, 255, 255],
+            "frame": [225, 225, 225],
+            "frame_inactive": [240, 240, 240]
+        },
+        "images": {
+            "theme_tab_background": "images/theme_tab_background.png",
+            "theme_tab_background_inactive": "images/theme_tab_background_inactive.png",
+            "theme_toolbar": "images/theme_toolbar.png"
+        }
+    }
+}

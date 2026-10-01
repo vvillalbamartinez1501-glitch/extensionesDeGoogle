@@ -1,0 +1,423 @@
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-color: #0f0f0f;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-image 0.5s ease-in-out;
+    }
+
+    .buscador-google {
+      position: relative;
+      left: -60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      margin-top: -100px;
+      transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+    }
+
+    .logo {
+      width: 272px;
+      margin-bottom: 30px;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.9)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.75));
+    }
+
+    .barra-busqueda {
+      width: 500px;
+      max-width: 80vw;
+      padding: 15px 25px;
+      border-radius: 30px;
+      border: none;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      outline: none;
+      background-color: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .barra-busqueda:focus {
+      background-color: #ffffff;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    /* ACCESOS DIRECTOS CON PAGINACIÓN */
+    .accesos-directos {
+      position: relative;
+      left: -40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 0;
+      max-width: 440px;
+      transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+    }
+
+    .paginas-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .pagina-accesos {
+      display: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 18px;
+      width: 100%;
+    }
+
+    .pagina-accesos.activa {
+      display: flex;
+      animation: aparecer-pagina 0.28s ease-out forwards;
+    }
+
+    @keyframes aparecer-pagina {
+      from {
+        opacity: 0;
+        transform: translateY(6px) scale(0.98);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* CONTROLES DE PAGINACIÓN */
+    .paginacion-accesos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 14px;
+      width: 100%;
+      user-select: none;
+    }
+
+    .btn-pagina-nav {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      outline: none;
+      padding: 0;
+    }
+
+    .btn-pagina-nav:hover {
+      background: rgba(255, 255, 255, 0.25);
+      border-color: rgba(255, 255, 255, 0.45);
+      transform: scale(1.1);
+    }
+
+    .btn-pagina-nav:active {
+      transform: scale(0.92);
+    }
+
+    .pills-paginacion {
+      display: flex;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 3px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      gap: 4px;
+    }
+
+    .pill-pagina {
+      background: transparent;
+      border: none;
+      border-radius: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      outline: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .pill-pagina:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .pill-pagina.activa {
+      background: rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    }
+
+    .acceso-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      width: 82px;
+      padding: 10px 6px;
+      border-radius: 12px;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .acceso-item:hover {
+      background-color: rgba(255, 255, 255, 0.18);
+      transform: translateY(-3px);
+    }
+
+    .acceso-icono {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #5f6368;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+      margin-bottom: 8px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .acceso-item:hover .acceso-icono {
+      background-color: #ffffff;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+      transform: scale(1.06);
+    }
+
+    /* Colores propios de cada marca al hacer :hover */
+    .acceso-item.acceso-youtube:hover .acceso-icono,
+    .acceso-item[href*="youtube.com"]:hover .acceso-icono {
+      color: #ff0000;
+      box-shadow: 0 6px 16px rgba(255, 0, 0, 0.4);
+    }
+
+    .acceso-item.acceso-github:hover .acceso-icono,
+    .acceso-item[href*="github.com"]:hover .acceso-icono {
+      color: #181717;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+    }
+
+    .acceso-item.acceso-gmail:hover .acceso-icono,
+    .acceso-item[href*="mail.google.com"]:hover .acceso-icono {
+      color: #ea4335;
+      box-shadow: 0 6px 16px rgba(234, 67, 53, 0.4);
+    }
+
+    .acceso-item.acceso-outlook:hover .acceso-icono,
+    .acceso-item[href*="outlook."]:hover .acceso-icono {
+      color: #0078d4;
+      box-shadow: 0 6px 16px rgba(0, 120, 212, 0.45);
+    }
+
+    .acceso-item.acceso-gemini:hover .acceso-icono,
+    .acceso-item[href*="gemini.google.com"]:hover .acceso-icono {
+      color: #4e88d4;
+      box-shadow: 0 6px 16px rgba(78, 136, 212, 0.45);
+    }
+
+    .acceso-item.acceso-copilot:hover .acceso-icono,
+    .acceso-item[href*="copilot.microsoft.com"]:hover .acceso-icono {
+      color: #00a4ef;
+      box-shadow: 0 6px 16px rgba(0, 164, 239, 0.45);
+    }
+
+    .acceso-item.acceso-whatsapp:hover .acceso-icono,
+    .acceso-item[href*="whatsapp.com"]:hover .acceso-icono {
+      color: #25d366;
+      box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+    }
+
+    .acceso-item.acceso-horario:hover .acceso-icono,
+    .acceso-item[href*="calendar.google.com"]:hover .acceso-icono {
+      color: #f59e0b;
+      box-shadow: 0 6px 16px rgba(245, 158, 11, 0.45);
+    }
+
+    /* Colores para la página de Clases */
+    .acceso-item.acceso-meet:hover .acceso-icono,
+    .acceso-item[href*="meet.google.com"]:hover .acceso-icono {
+      color: #00ac47;
+      box-shadow: 0 6px 16px rgba(0, 172, 71, 0.45);
+    }
+
+    .acceso-item.acceso-teams:hover .acceso-icono,
+    .acceso-item[href*="teams.microsoft.com"]:hover .acceso-icono {
+      color: #6264a7;
+      box-shadow: 0 6px 16px rgba(98, 100, 167, 0.45);
+    }
+
+    .acceso-item.acceso-zoom:hover .acceso-icono,
+    .acceso-item[href*="zoom.us"]:hover .acceso-icono {
+      color: #2d8cff;
+      box-shadow: 0 6px 16px rgba(45, 140, 255, 0.45);
+    }
+
+    .acceso-item.acceso-classroom:hover .acceso-icono,
+    .acceso-item[href*="classroom.google.com"]:hover .acceso-icono {
+      color: #2e7d32;
+      box-shadow: 0 6px 16px rgba(46, 125, 50, 0.45);
+    }
+
+    .acceso-item.acceso-clase1:hover .acceso-icono {
+      color: #e91e63;
+      box-shadow: 0 6px 16px rgba(233, 30, 99, 0.45);
+    }
+
+    .acceso-item.acceso-clase2:hover .acceso-icono {
+      color: #9c27b0;
+      box-shadow: 0 6px 16px rgba(156, 39, 176, 0.45);
+    }
+
+    .acceso-item.acceso-clase3:hover .acceso-icono {
+      color: #3f51b5;
+      box-shadow: 0 6px 16px rgba(63, 81, 181, 0.45);
+    }
+
+    .acceso-item.acceso-aulavirtual:hover .acceso-icono {
+      color: #ff6f00;
+      box-shadow: 0 6px 16px rgba(255, 111, 0, 0.45);
+    }
+
+    .acceso-texto {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      color: #ffffff;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+      text-align: center;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ESTADO OCULTO DE CONTENIDO */
+    body.contenido-oculto .buscador-google,
+    body.contenido-oculto .accesos-directos {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: scale(0.96);
+    }
+
+    /* BOTÓN PARA OCULTAR/MOSTRAR CONTENIDO */
+    .btn-toggle-contenido {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 1000;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      outline: none;
+      padding: 0;
+    }
+
+    .btn-toggle-contenido:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: scale(1.08);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .btn-toggle-contenido:active {
+      transform: scale(0.94);
+    }
+
+    .btn-toggle-contenido .icono-ojo-cerrado {
+      display: none;
+    }
+
+    body.contenido-oculto .btn-toggle-contenido .icono-ojo-abierto {
+      display: none;
+    }
+
+    body.contenido-oculto .btn-toggle-contenido .icono-ojo-cerrado {
+      display: block;
+    }
+
+    body.contenido-oculto .btn-toggle-contenido {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+
+    /* VARIABLES DE COLORES PARA EL EFECTO */
+    :root {
+      --efecto-color-1: #00ffff;
+      /* Color de la electricidad (Cyan) */
+      --efecto-color-2: #ff00ff;
+      /* Color de las bolitas (Magenta) */
+    }
+
+    /* 
+      1. CONTENEDOR: 
+    */
+    .contenedor-interactivo {
+      position: relative;
+      padding: 15px;
+      border-radius: 45px;
+      /* Mayor que los 30px de tu barra para mantener la forma */
+      display: inline-block;
+    }
+
+    /* 
+      3. BOLITAS QUE SIGUEN EL RATÓN:
+    */
+    .chispa {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background-color: var(--efecto-color-2);
+      border-radius: 50%;
+      pointer-events: none;
+      /* Para que no bloqueen tu ratón al escribir */
+      box-shadow: 0 0 10px var(--efecto-color-2), 0 0 15px var(--efecto-color-1);
+      animation: desvanecer-chispa 0.6s ease-out forwards;
+      z-index: 10;
+    }
+
+    @keyframes desvanecer-chispa {
+      0% {
+        opacity: 1;
+        transform: scale(1) translate(0px, 0px);
+      }
+
+      100% {
+        opacity: 0;
+        transform: scale(0.2) translate(var(--destino-x), var(--destino-y));
+      }
+    }

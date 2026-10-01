@@ -1,0 +1,27 @@
+{
+    "manifest_version": 3,
+    "name": "Tema Neón Arcoíris",
+    "description": "Bordes y colores del navegador arcoíris.",
+    "version": "1.0",
+    "theme": {
+        "tints": {
+            "frame": [-1, -1, -1],
+            "background_tab": [-1, -1, -1]
+        },
+        "colors": {
+            "ntp_text": [255, 255, 255],
+            "tab_background_text_inactive": [204, 204, 204],
+            "tab_background_text": [255, 255, 255],
+            "tab_text": [255, 255, 255],
+            "ntp_background": [15, 15, 15],
+            "toolbar": [15, 15, 15],
+            "frame": [36, 36, 36],
+            "frame_inactive": [51, 51, 51]
+        },
+        "images": {
+            "theme_tab_background": "images/theme_tab_background.png",
+            "theme_tab_background_inactive": "images/theme_tab_background_inactive.png",
+            "theme_toolbar": "images/theme_toolbar.png"
+        }
+    }
+}
