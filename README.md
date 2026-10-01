@@ -8,7 +8,7 @@ Las extensiones de este repositorio están pensadas como experiencias modulares:
 
 El repositorio está dividido en carpetas independientes, cada una siendo una extensión funcional por sí misma. Chrome requiere que los Temas y las Extensiones de Nueva Pestaña vayan separados.
 
-*   📁 **/Guguel-New-Tab**
+*   📁 **/fondo_pantalla**
     *   Extensión que reemplaza la "Nueva Pestaña" por un buscador interactivo con fondos rotatorios (JPG/GIF), títulos aleatorios y efectos de ratón con partículas.
 *   📁 **/Tema-Oscuro**
     *   Tema de Chrome (Manifest V3) que modifica los colores de los bordes, barras de marcadores y pestañas activas/inactivas para una experiencia *Dark Mode*.
