@@ -49,7 +49,6 @@
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
     }
 
-    /* ACCESOS DIRECTOS CON PAGINACIÓN */
     .accesos-directos {
       position: relative;
       left: -40px;
@@ -57,7 +56,7 @@
       flex-direction: column;
       align-items: center;
       margin-top: 0;
-      max-width: 440px;
+      max-width: 520px;
       transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
     }
 
@@ -72,6 +71,16 @@
       justify-content: center;
       gap: 18px;
       width: 100%;
+    }
+
+    .pagina-accesos[data-pagina-index="0"] {
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .pagina-accesos[data-pagina-index="1"] {
+      max-width: 520px;
+      margin: 0 auto;
     }
 
     .pagina-accesos.activa {
@@ -169,6 +178,7 @@
     }
 
     .acceso-item {
+      position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -182,6 +192,7 @@
     .acceso-item:hover {
       background-color: rgba(255, 255, 255, 0.18);
       transform: translateY(-3px);
+      z-index: 25;
     }
 
     .acceso-icono {
@@ -255,49 +266,63 @@
       box-shadow: 0 6px 16px rgba(245, 158, 11, 0.45);
     }
 
-    /* Colores para la página de Clases */
-    .acceso-item.acceso-meet:hover .acceso-icono,
-    .acceso-item[href*="meet.google.com"]:hover .acceso-icono {
-      color: #00ac47;
-      box-shadow: 0 6px 16px rgba(0, 172, 71, 0.45);
+    /* Colores para las asignaturas de la página de Clases */
+    .acceso-item.acceso-ad:hover .acceso-icono {
+      color: #0284c7;
+      box-shadow: 0 6px 16px rgba(2, 132, 199, 0.45);
     }
 
-    .acceso-item.acceso-teams:hover .acceso-icono,
-    .acceso-item[href*="teams.microsoft.com"]:hover .acceso-icono {
-      color: #6264a7;
-      box-shadow: 0 6px 16px rgba(98, 100, 167, 0.45);
+    .acceso-item.acceso-di:hover .acceso-icono {
+      color: #ec4899;
+      box-shadow: 0 6px 16px rgba(236, 72, 153, 0.45);
     }
 
-    .acceso-item.acceso-zoom:hover .acceso-icono,
-    .acceso-item[href*="zoom.us"]:hover .acceso-icono {
-      color: #2d8cff;
-      box-shadow: 0 6px 16px rgba(45, 140, 255, 0.45);
+    .acceso-item.acceso-psp:hover .acceso-icono {
+      color: #8b5cf6;
+      box-shadow: 0 6px 16px rgba(139, 92, 246, 0.45);
     }
 
-    .acceso-item.acceso-classroom:hover .acceso-icono,
-    .acceso-item[href*="classroom.google.com"]:hover .acceso-icono {
-      color: #2e7d32;
-      box-shadow: 0 6px 16px rgba(46, 125, 50, 0.45);
+    .acceso-item.acceso-pm:hover .acceso-icono {
+      color: #f97316;
+      box-shadow: 0 6px 16px rgba(249, 115, 22, 0.45);
     }
 
-    .acceso-item.acceso-clase1:hover .acceso-icono {
-      color: #e91e63;
-      box-shadow: 0 6px 16px rgba(233, 30, 99, 0.45);
+    .acceso-item.acceso-sge:hover .acceso-icono {
+      color: #3b82f6;
+      box-shadow: 0 6px 16px rgba(59, 130, 246, 0.45);
     }
 
-    .acceso-item.acceso-clase2:hover .acceso-icono {
-      color: #9c27b0;
-      box-shadow: 0 6px 16px rgba(156, 39, 176, 0.45);
+    .acceso-item.acceso-ingles:hover .acceso-icono {
+      color: #e11d48;
+      box-shadow: 0 6px 16px rgba(225, 29, 72, 0.45);
     }
 
-    .acceso-item.acceso-clase3:hover .acceso-icono {
-      color: #3f51b5;
-      box-shadow: 0 6px 16px rgba(63, 81, 181, 0.45);
+    .acceso-item.acceso-ipe:hover .acceso-icono {
+      color: #eab308;
+      box-shadow: 0 6px 16px rgba(234, 179, 8, 0.45);
     }
 
-    .acceso-item.acceso-aulavirtual:hover .acceso-icono {
-      color: #ff6f00;
-      box-shadow: 0 6px 16px rgba(255, 111, 0, 0.45);
+    .acceso-item.acceso-digitalizacion:hover .acceso-icono {
+      color: #06b6d4;
+      box-shadow: 0 6px 16px rgba(6, 182, 212, 0.45);
+    }
+
+    .acceso-item.acceso-sostenibilidad:hover .acceso-icono {
+      color: #22c55e;
+      box-shadow: 0 6px 16px rgba(34, 197, 94, 0.45);
+    }
+
+    .acceso-item.acceso-python:hover .acceso-icono {
+      color: #38bdf8;
+      box-shadow: 0 6px 16px rgba(56, 189, 248, 0.45);
+    }
+
+    .acceso-texto-contenedor {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
     }
 
     .acceso-texto {
@@ -311,6 +336,43 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+
+    /* Nombre largo flotante que aparece solo al hacer :hover */
+    .acceso-texto-contenedor .texto-largo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.92);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      white-space: nowrap;
+      background: rgba(18, 18, 18, 0.95);
+      color: #ffffff;
+      padding: 4px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      z-index: 100;
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .acceso-item:hover .texto-corto {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .acceso-item:hover .texto-largo {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, -50%) scale(1);
     }
 
     /* ESTADO OCULTO DE CONTENIDO */

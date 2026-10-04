@@ -117,30 +117,36 @@ function activarEfectoChispas(contenedor) {
       } else if (item.classList.contains('acceso-horario')) {
         chispa.style.setProperty('--efecto-color-2', '#f59e0b');
         chispa.style.setProperty('--efecto-color-1', '#fbbf24');
-      } else if (item.classList.contains('acceso-meet')) {
-        chispa.style.setProperty('--efecto-color-2', '#00ac47');
-        chispa.style.setProperty('--efecto-color-1', '#57bb8a');
-      } else if (item.classList.contains('acceso-teams')) {
-        chispa.style.setProperty('--efecto-color-2', '#6264a7');
-        chispa.style.setProperty('--efecto-color-1', '#8b8dc8');
-      } else if (item.classList.contains('acceso-zoom')) {
-        chispa.style.setProperty('--efecto-color-2', '#2d8cff');
-        chispa.style.setProperty('--efecto-color-1', '#70b2ff');
-      } else if (item.classList.contains('acceso-classroom')) {
-        chispa.style.setProperty('--efecto-color-2', '#2e7d32');
-        chispa.style.setProperty('--efecto-color-1', '#81c784');
-      } else if (item.classList.contains('acceso-clase1')) {
-        chispa.style.setProperty('--efecto-color-2', '#e91e63');
-        chispa.style.setProperty('--efecto-color-1', '#f06292');
-      } else if (item.classList.contains('acceso-clase2')) {
-        chispa.style.setProperty('--efecto-color-2', '#9c27b0');
-        chispa.style.setProperty('--efecto-color-1', '#ba68c8');
-      } else if (item.classList.contains('acceso-clase3')) {
-        chispa.style.setProperty('--efecto-color-2', '#3f51b5');
-        chispa.style.setProperty('--efecto-color-1', '#7986cb');
-      } else if (item.classList.contains('acceso-aulavirtual')) {
-        chispa.style.setProperty('--efecto-color-2', '#ff6f00');
-        chispa.style.setProperty('--efecto-color-1', '#ffb74d');
+      } else if (item.classList.contains('acceso-ad')) {
+        chispa.style.setProperty('--efecto-color-2', '#0284c7');
+        chispa.style.setProperty('--efecto-color-1', '#38bdf8');
+      } else if (item.classList.contains('acceso-di')) {
+        chispa.style.setProperty('--efecto-color-2', '#ec4899');
+        chispa.style.setProperty('--efecto-color-1', '#f472b6');
+      } else if (item.classList.contains('acceso-psp')) {
+        chispa.style.setProperty('--efecto-color-2', '#8b5cf6');
+        chispa.style.setProperty('--efecto-color-1', '#a78bfa');
+      } else if (item.classList.contains('acceso-pm')) {
+        chispa.style.setProperty('--efecto-color-2', '#f97316');
+        chispa.style.setProperty('--efecto-color-1', '#fb923c');
+      } else if (item.classList.contains('acceso-sge')) {
+        chispa.style.setProperty('--efecto-color-2', '#3b82f6');
+        chispa.style.setProperty('--efecto-color-1', '#60a5fa');
+      } else if (item.classList.contains('acceso-ingles')) {
+        chispa.style.setProperty('--efecto-color-2', '#e11d48');
+        chispa.style.setProperty('--efecto-color-1', '#fb7185');
+      } else if (item.classList.contains('acceso-ipe')) {
+        chispa.style.setProperty('--efecto-color-2', '#eab308');
+        chispa.style.setProperty('--efecto-color-1', '#fde047');
+      } else if (item.classList.contains('acceso-digitalizacion')) {
+        chispa.style.setProperty('--efecto-color-2', '#06b6d4');
+        chispa.style.setProperty('--efecto-color-1', '#22d3ee');
+      } else if (item.classList.contains('acceso-sostenibilidad')) {
+        chispa.style.setProperty('--efecto-color-2', '#22c55e');
+        chispa.style.setProperty('--efecto-color-1', '#4ade80');
+      } else if (item.classList.contains('acceso-python')) {
+        chispa.style.setProperty('--efecto-color-2', '#3776ab');
+        chispa.style.setProperty('--efecto-color-1', '#ffd43b');
       }
     }
 
