@@ -177,6 +177,77 @@ if (btnToggleContenido) {
   });
 }
 
+// --- LÓGICA DE BOTÓN PARA MOSTRAR / OCULTAR ÚNICAMENTE ACCESOS DIRECTOS ---
+const btnToggleAccesos = document.getElementById('btn-toggle-accesos');
+const textoBtnAccesos = btnToggleAccesos ? btnToggleAccesos.querySelector('.texto-btn-accesos') : null;
+const mediaQueryPequena = window.matchMedia('(max-width: 1050px), (max-height: 520px)');
+
+if (btnToggleAccesos) {
+  function esVentanaPequena() {
+    return mediaQueryPequena.matches;
+  }
+
+  function actualizarEstadoBotonAccesos() {
+    const pequena = esVentanaPequena();
+    if (pequena) {
+      const estanAbiertos = document.body.classList.contains('accesos-abiertos-movil');
+      btnToggleAccesos.setAttribute('title', estanAbiertos ? 'Ocultar accesos directos' : 'Mostrar accesos directos');
+      btnToggleAccesos.setAttribute('aria-label', estanAbiertos ? 'Ocultar accesos directos' : 'Mostrar accesos directos');
+      if (textoBtnAccesos) {
+        textoBtnAccesos.textContent = estanAbiertos ? 'Ocultar accesos' : 'Accesos directos';
+      }
+    } else {
+      const estanOcultos = document.body.classList.contains('accesos-ocultos');
+      btnToggleAccesos.setAttribute('title', estanOcultos ? 'Mostrar accesos directos' : 'Ocultar accesos directos');
+      btnToggleAccesos.setAttribute('aria-label', estanOcultos ? 'Mostrar accesos directos' : 'Ocultar accesos directos');
+      if (textoBtnAccesos) {
+        textoBtnAccesos.textContent = 'Accesos directos';
+      }
+    }
+  }
+
+  // En pantalla grande: restaurar si el usuario los había ocultado manualmente
+  if (!esVentanaPequena()) {
+    const accesosOcultosGuardados = localStorage.getItem('accesos_ocultos_escritorio') === 'true';
+    if (accesosOcultosGuardados) {
+      document.body.classList.add('accesos-ocultos');
+    }
+  }
+
+  actualizarEstadoBotonAccesos();
+
+  btnToggleAccesos.addEventListener('click', () => {
+    if (esVentanaPequena()) {
+      document.body.classList.toggle('accesos-abiertos-movil');
+    } else {
+      const estanOcultos = document.body.classList.toggle('accesos-ocultos');
+      localStorage.setItem('accesos_ocultos_escritorio', estanOcultos);
+    }
+    actualizarEstadoBotonAccesos();
+  });
+
+  // Reaccionar dinámicamente si el usuario redimensiona la ventana
+  mediaQueryPequena.addEventListener('change', (e) => {
+    if (e.matches) {
+      // Pasó a ventana pequeña: por predeterminado ocultar accesos
+      document.body.classList.remove('accesos-abiertos-movil');
+    } else {
+      // Pasó a ventana grande: restaurar según preferencia o mostrar directamente
+      const accesosOcultosGuardados = localStorage.getItem('accesos_ocultos_escritorio') === 'true';
+      document.body.classList.toggle('accesos-ocultos', accesosOcultosGuardados);
+    }
+    actualizarEstadoBotonAccesos();
+  });
+
+  // Cerrar accesos con la tecla Escape si están abiertos en ventana pequeña
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.body.classList.contains('accesos-abiertos-movil')) {
+      document.body.classList.remove('accesos-abiertos-movil');
+      actualizarEstadoBotonAccesos();
+    }
+  });
+}
+
 // --- LÓGICA DE PAGINACIÓN DE ACCESOS DIRECTOS ---
 const paginasAccesos = document.querySelectorAll('.pagina-accesos');
 const pillsPagina = document.querySelectorAll('.pill-pagina');
