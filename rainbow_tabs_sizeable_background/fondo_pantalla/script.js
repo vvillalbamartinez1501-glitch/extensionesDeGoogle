@@ -133,8 +133,8 @@ function activarEfectoChispas(contenedor) {
         chispa.style.setProperty('--efecto-color-2', '#3b82f6');
         chispa.style.setProperty('--efecto-color-1', '#60a5fa');
       } else if (item.classList.contains('acceso-ingles')) {
-        chispa.style.setProperty('--efecto-color-2', '#e11d48');
-        chispa.style.setProperty('--efecto-color-1', '#fb7185');
+        chispa.style.setProperty('--efecto-color-2', '#1e3a8a');
+        chispa.style.setProperty('--efecto-color-1', '#3b82f6');
       } else if (item.classList.contains('acceso-ipe')) {
         chispa.style.setProperty('--efecto-color-2', '#eab308');
         chispa.style.setProperty('--efecto-color-1', '#fde047');
