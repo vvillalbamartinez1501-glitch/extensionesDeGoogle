@@ -3,6 +3,9 @@
   "name": "🛌( ˘ω˘ ) ⏰(º_º) ➜ 🏃💨🍞 ➜ ( 0_0)💻 ➜ (¬_¬)⌨️ ➜ ( ಠ_ಠ)🖱️ ➜ (╯°□°)╯︵ ┻━┻  ➜ 🔥🏢🔥 ➜  🏍️💨 ε=ε=┌( >_<)┘ ➜ 🍹( ˘ ▽ ˘ )🌴 ",
   "version": "1.0",
   "description": "Fonde de pantalla ajustado a la ventana.",
+    "action": {
+    "default_icon": "images/icons/icono_extension.png"
+  },
   "permissions": [
     "tabs"
   ],

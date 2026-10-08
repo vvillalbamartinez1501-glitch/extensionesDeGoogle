@@ -63,6 +63,20 @@
     <span class="texto-btn-accesos">Accesos directos</span>
   </button>
 
+  <!-- BOTÓN PARA DESPLEGAR PI QUIZ -->
+  <button id="btn-toggle-piquiz" class="btn-toggle-piquiz" title="Jugar Pi Quiz"
+    aria-label="Jugar Pi Quiz">
+    <svg class="icono-pi" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"
+      stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 7h16M9 7v11M17 7v9a2 2 0 0 0 2 2"></path>
+    </svg>
+    <svg class="icono-pi-cerrar" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+
   <!-- ACCESOS DIRECTOS CON PAGINACIÓN -->
   <div class="accesos-directos">
     <div class="paginas-wrapper">
@@ -326,6 +340,51 @@
           <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
         </svg>
       </button>
+    </div>
+  </div>
+
+  <!-- CONTENEDOR DEL JUEGO PI QUIZ -->
+  <div id="pi-quiz-container" class="pi-quiz-container" aria-hidden="true">
+    <div class="pi-quiz-card">
+      <!-- BARRA SUPERIOR COMPACTA -->
+      <div class="pi-quiz-topbar">
+        <div class="pi-quiz-brand">
+          <span class="pi-badge">π</span>
+          <span class="pi-title">Pi Quiz</span>
+        </div>
+
+        <!-- CONTROLES NORMALES (EN JUEGO) -->
+        <div id="pi-controls-bar" class="pi-controls-bar">
+          <button id="start-btn" class="pi-play-btn">Play</button>
+          <div class="mistakes-box" title="Vidas">
+            <span class="corazon-icono">❤️</span>
+            <span id="mistakes-count">5</span>
+          </div>
+          <div class="pi-score-box" title="Aciertos">
+            <span id="current-score">0</span>/150
+          </div>
+        </div>
+
+        <!-- RESULTADOS COMPACTOS (AL FINALIZAR) -->
+        <div id="game-over-modal" class="game-over-compact">
+          <span id="game-over-title" class="game-over-tag">Fin</span>
+          <span class="score-highlight"><span id="final-score">0</span>/150</span>
+          <span id="percentile-text" class="percentile-tag">Top 50%</span>
+          <button id="retry-btn" class="pi-play-btn pi-retry-btn">Reintentar</button>
+        </div>
+
+        <button id="pi-quiz-btn-cerrar" class="pi-quiz-btn-cerrar" title="Cerrar Pi Quiz" aria-label="Cerrar Pi Quiz">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- GRID COMPACTO DE CASILLAS (TODO A LA VISTA, SIN SCROLL) -->
+      <div class="pi-grid-container" id="pi-grid">
+        <div class="pi-static-prefix">3.</div>
+      </div>
     </div>
   </div>
 

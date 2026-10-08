@@ -27,7 +27,6 @@ const LISTA_TITULOS = [
 const LISTA_FONDOS = [
   "at_background.gif",
   "barça_1_background.jpg",
-  "barça_2_background.jpg",
   "barça_3_background.jpg",
   "barça_4_background.jpg",
   "cp_background.gif",
@@ -35,7 +34,6 @@ const LISTA_FONDOS = [
   "lapis_background.gif",
   "pedri_background.jpg",
   "su_background.gif",
-  "van_bojack_background.jpg",
   "zelda_background.gif",
   "zelda_2_background.gif"
 ];
@@ -289,3 +287,240 @@ if (paginasAccesos.length > 0) {
     btnNext.addEventListener('click', () => mostrarPagina(paginaActual + 1));
   }
 }
+
+// ========================================================
+// --- LÓGICA DE JUEGO PI QUIZ ---
+// ========================================================
+const PI_DIGITS = "141592653589793238462643383279502884197169399375105820974944592307816406286208998628034825342117067982148086513282306647093844609550582231725359408128";
+
+let currentIndex = 0;
+let mistakesLeft = 5;
+let isPlaying = false;
+let digitBoxes = []; // Array para guardar las referencias a cada casilla
+
+const btnTogglePiQuiz = document.getElementById('btn-toggle-piquiz');
+const piQuizContainer = document.getElementById('pi-quiz-container');
+const piQuizBtnCerrar = document.getElementById('pi-quiz-btn-cerrar');
+const startBtn = document.getElementById('start-btn');
+const retryBtn = document.getElementById('retry-btn');
+const piGrid = document.getElementById('pi-grid');
+const mistakesCount = document.getElementById('mistakes-count');
+const gameOverModal = document.getElementById('game-over-modal');
+const gameOverTitle = document.getElementById('game-over-title');
+const finalScore = document.getElementById('final-score');
+const percentileText = document.getElementById('percentile-text');
+
+// Generar el tablero visual de cajas
+function buildGrid() {
+  if (!piGrid) return;
+  // Limpiamos el grid manteniendo solo el "3 ."
+  piGrid.innerHTML = '<div class="pi-static-prefix">3 .</div>';
+  digitBoxes = []; // Reiniciamos el array de referencias
+
+  // Crear 150 divs (uno para cada número)
+  for (let i = 0; i < PI_DIGITS.length; i++) {
+    const box = document.createElement('div');
+    box.classList.add('digit-box');
+
+    // Añadir al DOM y guardar referencia en el array
+    piGrid.appendChild(box);
+    digitBoxes.push(box);
+  }
+}
+
+// Actualiza qué caja tiene el borde iluminado indicando el "cursor"
+function updateActiveBox() {
+  // Quitar la clase active de todas las cajas
+  digitBoxes.forEach(box => box.classList.remove('active'));
+
+  // Ponérsela a la actual, si el juego no ha terminado
+  if (currentIndex < digitBoxes.length && isPlaying) {
+    const activeBox = digitBoxes[currentIndex];
+    activeBox.classList.add('active');
+    activeBox.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }
+}
+
+function initGame() {
+  isPlaying = true;
+  currentIndex = 0;
+  mistakesLeft = 5;
+
+  if (mistakesCount) mistakesCount.innerText = mistakesLeft;
+  if (startBtn) {
+    startBtn.innerText = "Play";
+    startBtn.style.display = "none";
+  }
+  if (gameOverModal) gameOverModal.style.display = "none";
+
+  buildGrid(); // Reconstruir cajas vacías
+  updateActiveBox(); // Iluminar la primera caja
+
+  document.removeEventListener('keydown', handleKeyPress);
+  document.addEventListener('keydown', handleKeyPress);
+}
+
+function reanudarOIniciarJuego() {
+  if (startBtn && startBtn.innerText === "Reanudar" && currentIndex > 0 && mistakesLeft > 0) {
+    isPlaying = true;
+    startBtn.style.display = "none";
+    updateActiveBox();
+    document.removeEventListener('keydown', handleKeyPress);
+    document.addEventListener('keydown', handleKeyPress);
+  } else {
+    initGame();
+  }
+}
+
+function handleKeyPress(e) {
+  if (!isPlaying) return;
+  const key = e.key;
+  if (!/^[0-9]$/.test(key)) return;
+
+  e.preventDefault();
+  const currentBox = digitBoxes[currentIndex];
+  if (!currentBox) return;
+
+  if (key === PI_DIGITS[currentIndex]) {
+    // Acierto
+    currentBox.innerText = key; // Escribir el número en la caja
+    currentBox.classList.remove('active');
+    currentBox.classList.add('filled'); // Cambiar a verde
+
+    currentIndex++;
+    updateActiveBox(); // Mover el "cursor" a la siguiente caja
+
+    if (currentIndex === PI_DIGITS.length) endGame(true);
+  } else {
+    // Fallo
+    mistakesLeft--;
+    if (mistakesCount) mistakesCount.innerText = mistakesLeft;
+
+    // Efecto visual de error en la caja actual (flash rojo)
+    currentBox.style.borderColor = "#ef4444";
+    currentBox.style.backgroundColor = "rgba(239, 68, 68, 0.4)";
+    currentBox.style.boxShadow = "0 0 12px rgba(239, 68, 68, 0.8)";
+
+    setTimeout(() => {
+      currentBox.style.borderColor = "";
+      currentBox.style.backgroundColor = "";
+      currentBox.style.boxShadow = "";
+    }, 250);
+
+    if (mistakesLeft <= 0) endGame(false);
+  }
+}
+
+function endGame(won) {
+  isPlaying = false;
+  document.removeEventListener('keydown', handleKeyPress);
+
+  // Quitar el cursor activo si termina
+  if (currentIndex < digitBoxes.length && digitBoxes[currentIndex]) {
+    digitBoxes[currentIndex].classList.remove('active');
+  }
+
+  if (finalScore) finalScore.innerText = currentIndex;
+  if (gameOverTitle) {
+    gameOverTitle.innerText = won ? "¡Enhorabuena! 🎉" : "Game Over";
+    gameOverTitle.style.color = won ? "#4ade80" : "#f87171";
+  }
+  if (percentileText) {
+    percentileText.innerText = won
+      ? "¡Increíble! Has memorizado los 150 dígitos de Pi (Percentil 99)"
+      : `Has quedado en el percentil ${calculatePercentile(currentIndex)}`;
+  }
+
+  if (gameOverModal) gameOverModal.style.display = "block";
+  if (startBtn) {
+    startBtn.innerText = "Volver a intentar";
+    startBtn.style.display = "none";
+  }
+}
+
+function calculatePercentile(score) {
+  if (score === 150) return 99;
+  if (score >= 143) return 96;
+  if (score >= 101) return 85;
+  if (score >= 52) return 50;
+  if (score >= 24) return 25;
+  if (score >= 10) return 10;
+  return 5;
+}
+
+// Abrir y cerrar la vista de Pi Quiz
+function abrirPiQuiz() {
+  document.body.classList.add('piquiz-activo');
+  if (btnTogglePiQuiz) {
+    btnTogglePiQuiz.setAttribute('title', 'Cerrar Pi Quiz');
+    btnTogglePiQuiz.setAttribute('aria-label', 'Cerrar Pi Quiz');
+  }
+  if (piQuizContainer) {
+    piQuizContainer.setAttribute('aria-hidden', 'false');
+  }
+  // Desenforcar inputs para que las pulsaciones vayan directamente al juego
+  document.querySelectorAll('input').forEach(input => input.blur());
+
+  // Construir casillas si aún no están listas
+  if (digitBoxes.length === 0) {
+    buildGrid();
+  }
+}
+
+function cerrarPiQuiz() {
+  document.body.classList.remove('piquiz-activo');
+  if (btnTogglePiQuiz) {
+    btnTogglePiQuiz.setAttribute('title', 'Jugar Pi Quiz');
+    btnTogglePiQuiz.setAttribute('aria-label', 'Jugar Pi Quiz');
+  }
+  if (piQuizContainer) {
+    piQuizContainer.setAttribute('aria-hidden', 'true');
+  }
+
+  // Si estaba en partida, pausar y retirar listener de teclas
+  if (isPlaying) {
+    isPlaying = false;
+    document.removeEventListener('keydown', handleKeyPress);
+    if (currentIndex < digitBoxes.length && digitBoxes[currentIndex]) {
+      digitBoxes[currentIndex].classList.remove('active');
+    }
+    if (startBtn) {
+      startBtn.style.display = "inline-block";
+      startBtn.innerText = "Reanudar";
+    }
+  }
+}
+
+function togglePiQuiz() {
+  if (document.body.classList.contains('piquiz-activo')) {
+    cerrarPiQuiz();
+  } else {
+    abrirPiQuiz();
+  }
+}
+
+if (btnTogglePiQuiz) {
+  btnTogglePiQuiz.addEventListener('click', togglePiQuiz);
+}
+
+if (piQuizBtnCerrar) {
+  piQuizBtnCerrar.addEventListener('click', cerrarPiQuiz);
+}
+
+if (startBtn) {
+  startBtn.addEventListener('click', reanudarOIniciarJuego);
+}
+
+if (retryBtn) {
+  retryBtn.addEventListener('click', initGame);
+}
+
+// Cerrar Pi Quiz con tecla Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && document.body.classList.contains('piquiz-activo')) {
+    cerrarPiQuiz();
+  }
+});
+
+// Inicializar el tablero visual de inmediato
+buildGrid();
