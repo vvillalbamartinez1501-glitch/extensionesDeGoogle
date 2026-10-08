@@ -59,10 +59,10 @@
             ]
         },
         "images": {
-            "theme_tab_background": "images/theme_tab_background.png",
-            "theme_tab_background_inactive": "images/theme_tab_background_inactive.png",
-            "theme_toolbar": "images/theme_toolbar.png",
-            "theme_frame": "images/theme_toolbar_old.png"
+            "theme_tab_background": "theme_tab_background.png",
+            "theme_tab_background_inactive": "theme_tab_background_inactive.png",            
+            "theme_toolbar": "theme_toolbar.png",
+            "theme_frame": "theme_toolbar.png"
         }
     }
 }
