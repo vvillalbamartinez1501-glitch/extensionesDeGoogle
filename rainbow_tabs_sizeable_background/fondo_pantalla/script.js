@@ -420,6 +420,15 @@ function endGame(won) {
     digitBoxes[currentIndex].classList.remove('active');
   }
 
+  // Revelar los dígitos no resueltos en las casillas restantes
+  for (let i = currentIndex; i < digitBoxes.length; i++) {
+    const box = digitBoxes[i];
+    if (box) {
+      box.innerText = PI_DIGITS[i];
+      box.classList.add('uncompleted');
+    }
+  }
+
   if (finalScore) finalScore.innerText = currentIndex;
   if (gameOverTitle) {
     gameOverTitle.innerText = won ? "¡Enhorabuena! 🎉" : "Game Over";
