@@ -73,8 +73,10 @@
       width: 100%;
     }
 
-    .pagina-accesos[data-pagina-index="0"] {
-      max-width: 420px;
+    .pagina-accesos[data-pagina-index="0"],
+    .pagina-accesos[data-pagina-index="2"],
+    .pagina-accesos[data-pagina-index="3"] {
+      max-width: 500px;
       margin: 0 auto;
     }
 
@@ -247,16 +249,80 @@
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
     }
 
+    /* Estilos y badges para los 4 botones de Gmail diferenciados */
+    .gmail-badge {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      font-size: 10px;
+      font-weight: 700;
+      font-family: Arial, sans-serif;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+      transition: transform 0.2s ease;
+      z-index: 2;
+    }
+
+    .acceso-item:hover .gmail-badge {
+      transform: scale(1.18);
+    }
+
+    .gmail-badge-1 { background-color: #ea4335; }
+    .gmail-badge-2 { background-color: #e11d48; }
+    .gmail-badge-3 { background-color: #ea580c; }
+    .gmail-badge-4 { background-color: #c026d3; }
+
+    /* Variación sutil en el borde de cada botón de Gmail en estado de reposo */
+    .acceso-item.acceso-gmail-1 .acceso-icono { border: 1.5px solid rgba(234, 67, 53, 0.45); }
+    .acceso-item.acceso-gmail-2 .acceso-icono { border: 1.5px solid rgba(225, 29, 72, 0.45); }
+    .acceso-item.acceso-gmail-3 .acceso-icono { border: 1.5px solid rgba(234, 88, 12, 0.45); }
+    .acceso-item.acceso-gmail-4 .acceso-icono { border: 1.5px solid rgba(192, 38, 211, 0.45); }
+
+    /* Hover de cada Gmail con su matiz diferenciado */
     .acceso-item.acceso-gmail:hover .acceso-icono,
+    .acceso-item.acceso-gmail-1:hover .acceso-icono,
     .acceso-item[href*="mail.google.com"]:hover .acceso-icono {
       color: #ea4335;
-      box-shadow: 0 6px 16px rgba(234, 67, 53, 0.4);
+      border-color: #ea4335;
+      box-shadow: 0 6px 16px rgba(234, 67, 53, 0.45);
+    }
+
+    .acceso-item.acceso-gmail-2:hover .acceso-icono {
+      color: #e11d48;
+      border-color: #e11d48;
+      box-shadow: 0 6px 16px rgba(225, 29, 72, 0.45);
+    }
+
+    .acceso-item.acceso-gmail-3:hover .acceso-icono {
+      color: #ea580c;
+      border-color: #ea580c;
+      box-shadow: 0 6px 16px rgba(234, 88, 12, 0.45);
+    }
+
+    .acceso-item.acceso-gmail-4:hover .acceso-icono {
+      color: #c026d3;
+      border-color: #c026d3;
+      box-shadow: 0 6px 16px rgba(192, 38, 211, 0.45);
     }
 
     .acceso-item.acceso-outlook:hover .acceso-icono,
     .acceso-item[href*="outlook."]:hover .acceso-icono {
       color: #0078d4;
       box-shadow: 0 6px 16px rgba(0, 120, 212, 0.45);
+    }
+
+    /* ChatGPT */
+    .acceso-item.acceso-chatgpt:hover .acceso-icono,
+    .acceso-item[href*="chatgpt.com"]:hover .acceso-icono {
+      color: #10a37f;
+      box-shadow: 0 6px 16px rgba(16, 163, 127, 0.45);
     }
 
     .acceso-item.acceso-gemini:hover .acceso-icono,
@@ -275,6 +341,57 @@
     .acceso-item[href*="whatsapp.com"]:hover .acceso-icono {
       color: #25d366;
       box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+    }
+
+    /* Ocio: Pi */
+    .acceso-item.acceso-pi:hover .acceso-icono,
+    .acceso-item[href*="amplifyapp.com"]:hover .acceso-icono {
+      color: #8b5cf6;
+      box-shadow: 0 6px 16px rgba(139, 92, 246, 0.5);
+    }
+
+    /* Ocio: Wordle */
+    .acceso-item.acceso-wordle:hover .acceso-icono,
+    .acceso-item[href*="wordle"]:hover .acceso-icono {
+      color: #538d4e;
+      box-shadow: 0 6px 16px rgba(83, 141, 78, 0.5);
+    }
+
+    /* Ocio: Discord */
+    .acceso-item.acceso-discord:hover .acceso-icono,
+    .acceso-item[href*="discord.com"]:hover .acceso-icono {
+      color: #5865f2;
+      box-shadow: 0 6px 16px rgba(88, 101, 242, 0.5);
+    }
+
+    /* Docs: Google Docs / Documentos */
+    .acceso-item.acceso-gdocs:hover .acceso-icono {
+      color: #4285f4;
+      box-shadow: 0 6px 16px rgba(66, 133, 244, 0.45);
+    }
+
+    /* Docs: Google Sheets / Hojas de cálculo */
+    .acceso-item.acceso-gsheets:hover .acceso-icono {
+      color: #0f9d58;
+      box-shadow: 0 6px 16px rgba(15, 157, 88, 0.45);
+    }
+
+    /* Docs: Google Slides / Presentaciones */
+    .acceso-item.acceso-gslides:hover .acceso-icono {
+      color: #f4b400;
+      box-shadow: 0 6px 16px rgba(244, 180, 0, 0.45);
+    }
+
+    /* Docs: Google Drive */
+    .acceso-item.acceso-gdrive:hover .acceso-icono {
+      color: #1a73e8;
+      box-shadow: 0 6px 16px rgba(26, 115, 232, 0.45);
+    }
+
+    /* Docs: Google Forms */
+    .acceso-item.acceso-gforms:hover .acceso-icono {
+      color: #7248b9;
+      box-shadow: 0 6px 16px rgba(114, 72, 185, 0.45);
     }
 
     .acceso-item.acceso-horario:hover .acceso-icono,

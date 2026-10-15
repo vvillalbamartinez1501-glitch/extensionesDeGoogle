@@ -97,12 +97,24 @@ function activarEfectoChispas(contenedor) {
       } else if (item.classList.contains('acceso-github')) {
         chispa.style.setProperty('--efecto-color-2', '#ffffff');
         chispa.style.setProperty('--efecto-color-1', '#24292e');
-      } else if (item.classList.contains('acceso-gmail')) {
+      } else if (item.classList.contains('acceso-gmail-2')) {
+        chispa.style.setProperty('--efecto-color-2', '#e11d48');
+        chispa.style.setProperty('--efecto-color-1', '#fb7185');
+      } else if (item.classList.contains('acceso-gmail-3')) {
+        chispa.style.setProperty('--efecto-color-2', '#ea580c');
+        chispa.style.setProperty('--efecto-color-1', '#fdba74');
+      } else if (item.classList.contains('acceso-gmail-4')) {
+        chispa.style.setProperty('--efecto-color-2', '#c026d3');
+        chispa.style.setProperty('--efecto-color-1', '#f472b6');
+      } else if (item.classList.contains('acceso-gmail') || item.classList.contains('acceso-gmail-1')) {
         chispa.style.setProperty('--efecto-color-2', '#ea4335');
         chispa.style.setProperty('--efecto-color-1', '#ff8577');
       } else if (item.classList.contains('acceso-outlook')) {
         chispa.style.setProperty('--efecto-color-2', '#0078d4');
         chispa.style.setProperty('--efecto-color-1', '#50a8eb');
+      } else if (item.classList.contains('acceso-chatgpt')) {
+        chispa.style.setProperty('--efecto-color-2', '#10a37f');
+        chispa.style.setProperty('--efecto-color-1', '#5eead4');
       } else if (item.classList.contains('acceso-gemini')) {
         chispa.style.setProperty('--efecto-color-2', '#4e88d4');
         chispa.style.setProperty('--efecto-color-1', '#9b72cf');
@@ -112,6 +124,30 @@ function activarEfectoChispas(contenedor) {
       } else if (item.classList.contains('acceso-whatsapp')) {
         chispa.style.setProperty('--efecto-color-2', '#25d366');
         chispa.style.setProperty('--efecto-color-1', '#4ade80');
+      } else if (item.classList.contains('acceso-pi')) {
+        chispa.style.setProperty('--efecto-color-2', '#8b5cf6');
+        chispa.style.setProperty('--efecto-color-1', '#c084fc');
+      } else if (item.classList.contains('acceso-wordle')) {
+        chispa.style.setProperty('--efecto-color-2', '#538d4e');
+        chispa.style.setProperty('--efecto-color-1', '#b59f3b');
+      } else if (item.classList.contains('acceso-discord')) {
+        chispa.style.setProperty('--efecto-color-2', '#5865f2');
+        chispa.style.setProperty('--efecto-color-1', '#818cf8');
+      } else if (item.classList.contains('acceso-gdocs')) {
+        chispa.style.setProperty('--efecto-color-2', '#4285f4');
+        chispa.style.setProperty('--efecto-color-1', '#93c5fd');
+      } else if (item.classList.contains('acceso-gsheets')) {
+        chispa.style.setProperty('--efecto-color-2', '#0f9d58');
+        chispa.style.setProperty('--efecto-color-1', '#86efac');
+      } else if (item.classList.contains('acceso-gslides')) {
+        chispa.style.setProperty('--efecto-color-2', '#f4b400');
+        chispa.style.setProperty('--efecto-color-1', '#fde047');
+      } else if (item.classList.contains('acceso-gdrive')) {
+        chispa.style.setProperty('--efecto-color-2', '#1a73e8');
+        chispa.style.setProperty('--efecto-color-1', '#60a5fa');
+      } else if (item.classList.contains('acceso-gforms')) {
+        chispa.style.setProperty('--efecto-color-2', '#7248b9');
+        chispa.style.setProperty('--efecto-color-1', '#d8b4fe');
       } else if (item.classList.contains('acceso-horario')) {
         chispa.style.setProperty('--efecto-color-2', '#f59e0b');
         chispa.style.setProperty('--efecto-color-1', '#fbbf24');
